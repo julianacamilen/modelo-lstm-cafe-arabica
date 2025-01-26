@@ -2,15 +2,11 @@
 Aplicação do modelo Long Time-Short Memory (LSTM) para a previsão diária de preço (em reais) de café arábica no Brasil, considerando dados históricos do CEPEA no período de 01/01/2015 à 01/01/2025.
 
 # Etapas do projeto
-Processamento dos dados: Adequações gerais dos dados para treinamento e teste do modelo.
-
-Engenharia de atributos: Aplicação técnicas de normalização das variáveis, divisão do conjunto de dados para treinamento (80%) e teste (20%) e remodelação dos dados para o formato 3D conforme exigido pelo LSTM (`amostras`, `passos_de_tempo`, `características`).
-
-Desenvolvimento e treinamento do modelo: Construção de um modelo LSTM multicamadas, considerando `relu` para ativação, o otimizador `adam`, a função de perda `mean_squared_error` e a métrica de performance `mae`. 
-
-Avaliação do modelo: Cálculo das métricas de performance MAE, MAPE e RMSE.
-
-Visualização: Gráfico de linha para visualização dos preços de treinamento, validação e previstos para análise de desempenho.
+1. Processamento dos dados: Adequações gerais dos dados para treinamento e teste do modelo.
+2. Engenharia de atributos: Aplicação técnicas de normalização das variáveis, divisão do conjunto de dados para treinamento (80%) e teste (20%) e remodelação dos dados para o formato 3D conforme exigido pelo LSTM (`amostras`, `passos_de_tempo`, `características`).
+3. Desenvolvimento e treinamento do modelo: Construção de um modelo LSTM multicamadas, considerando `relu` para ativação, o otimizador `adam`, a função de perda `mean_squared_error` e a métrica de performance `mae`. 
+4. Avaliação do modelo: Cálculo das métricas de performance MAE, MAPE e RMSE.
+5. Visualização: Gráfico de linha para visualização dos preços de treinamento, validação e previstos para análise de desempenho.
 
 # Ferramentas
 1. Python (`pandas`, `numpy`, `seaborn`, `matplotlib`) para manipulação e visualização dos dados.
