@@ -1,2 +1,2 @@
-# modelo-lstm-cafe-arabica
-Modelo preditivo baseado em LSTM para previsão de preços do café Arábica no Brasil, utilizando séries temporais e dados históricos do mercado.
+# LSTM para previsão de preço de café arábica
+Modelo preditivo baseado em LSTM para previsão de preços do café arábica no Brasil, utilizando séries temporais e dados históricos do mercado.
