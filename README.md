@@ -3,13 +3,17 @@ Aplicação do modelo Long Time-Short Memory (LSTM) para a previsão diária de 
 
 # Etapas do projeto
 Processamento dos dados: Adequações gerais dos dados para treinamento e teste do modelo.
-Engenharia de atributos: Aplicação técnicas de normalização das variáveis, divisão do conjunto de dados para treinamento (80%) e teste (20%) e remodelação dos dados para o formato 3D conforme exigido pelo LSTM (amostras, passos_de_tempo, características).
-Desenvolvimento e treinamento do modelo: Construção de um modelo LSTM multicamadas, considerando ReLU para ativação, Adam para otimização, e Erro Quadrático Médio (MSE) para perda e Erro Absoluto Médio para métrica de performance durante a compilação. 
+
+Engenharia de atributos: Aplicação técnicas de normalização das variáveis, divisão do conjunto de dados para treinamento (80%) e teste (20%) e remodelação dos dados para o formato 3D conforme exigido pelo LSTM (`amostras`, `passos_de_tempo`, `características`).
+
+Desenvolvimento e treinamento do modelo: Construção de um modelo LSTM multicamadas, considerando `relu` para ativação, o otimizador `adam`, a função de perda `mean_squared_error` e a métrica de performance `mae`. 
+
 Avaliação do modelo: Cálculo das métricas de performance MAE, MAPE e RMSE.
+
 Visualização: Gráfico de linha para visualização dos preços de treinamento, validação e previstos para análise de desempenho.
 
 # Ferramentas
-1. Python (pandas, numpy, seaborn, matplotlib) para manipulação e visualização dos dados.
+1. Python (`pandas`, `numpy`, `seaborn`, `matplotlib`) para manipulação e visualização dos dados.
 2. Keras/TensorFlow para construção do modelo LSTM.
 3. Scikit-learn para pré-processamento, incluindo escalonamento e divisão dos dados, e para cálculo de métricas de performance.
 4. Google Colab para treinamento do modelo.
@@ -68,3 +72,14 @@ Compreende dez anos (01/01/2015 - 01/01/2025) de dados referentes ao preço do c
 9. **Workflow Principal**:
    - Todo o fluxo de trabalho é organizado em um bloco `if __name__ == "__main__"` para facilitar a execução direta do script.
    - A sequência de etapas descrita acima é automatizada para execução contínua.
+
+# Resultados
+
+A avaliação do modelo aponta os seguintes resultados para as métricas de performance:
+
+1. **MAE (Mean Absolute Error)**:
+O MAE é de R$ 26.91, ou seja, em média, as previsões do modelo estão desviando dos dados reais por R$ 26.91. Esse valor é relativamente pequeno, sugerindo que o modelo está fazendo previsões próximas aos dados reais na maioria das vezes.
+2. **MAPE (Mean Absolute Percentage Error)**:
+O MAPE é de 2.07% e, portanto, indica um erro de 2.07% em média entre os dados reais e os dados previstos. Da mesma forma, essa métrica sugere que o modelo produz previsões precisas, com erros percentuais pequenos.
+3. **RMSE (Root Mean Squared Error)**:
+O RMSE é de R$ 44.42 e, uma vez que o RMSE é mais sensível a grandes erros do que o MAE, esse resultado mais alto mostra que, embora a média dos erros seja pequena, há algumas previsões em que o modelo erra significativamente, provavelmente em casos isolados ou extremos (outliers).
