@@ -47,25 +47,36 @@ Compreende dez anos (01/01/2015 - 01/01/2025) de dados referentes ao preço do c
      - Outra camada de `Dropout`.
      - Uma camada densa (fully connected) para gerar a previsão final.
    - Compilação do modelo utilizando o otimizador `adam`, a função de perda `mean_squared_error` e a métrica de performance `mae`.
+  
+6. **Definição de Early Stopping**
+   - Utilizado para evitar overfitting durante o treinamento.
+   - Monitora a perda na validação (`val_loss`) a cada época.
+   - Interrompe o treinamento se não houver melhora após 5 épocas consecutivas (`patience=5`).
+   - Garante que o modelo finalize com os melhores pesos já obtidos (`restore_best_weights=True`).
 
-6. **Treinamento do Modelo**:
+7. **Treinamento do Modelo**:
    - Treinamento do modelo com os dados (`X_train` e `y_train`).
-   - Definição dos hiperparâmetros número de épocas (`epochs=35`) e tamanho do lote (`batch_size=32`).
+   - Parâmetros utilizados no treinamento:
+      - Épocas (`epochs=100`): define o número máximo de passagens completas pelos dados de treino (até 100 rodadas).
+      - Batch size (`batch_size=32`): número de amostras processadas antes da atualização dos pesos — aqui, 32 exemplos por vez.
+      - `validation_split=0.2`: separa 20% dos dados de treino para avaliar o desempenho do modelo a cada época.
+   	- `callbacks=[early_stop]`: interrompe o treinamento automaticamente se a perda de validação não melhorar após 5 épocas, e restaura os melhores pesos obtidos.
+      - `verbose=1`: exibe o progresso do treinamento em tempo real, mostrando o desempenho em cada época.
 
-7. **Predição e Avaliação do Modelo**:
+8. **Predição e Avaliação do Modelo**:
    - O modelo treinado é utilizado para prever os valores no conjunto de teste (`X_test`).
    - Avaliação do desempenho utilizando métricas como:
      - **MAE (Erro Médio Absoluto)**: Mede o erro médio entre valores reais e previstos.
      - **MAPE (Erro Percentual Absoluto Médio)**: Mede o erro percentual médio.
      - **RMSE (Raiz do Erro Quadrático Médio)**: Mede a raiz quadrada da média dos erros ao quadrado.
 
-8. **Visualização das Previsões**:
+9. **Visualização das Previsões**:
    - Criação de um gráfico comparativo para ilustrar:
      - Dados reais de preços.
      - Previsões feitas pelo modelo.
      - Divisão dos dados reais entre os conjuntos de treinamento e teste.
 
-9. **Workflow Principal**:
+10. **Workflow Principal**:
    - Todo o fluxo de trabalho é organizado em um bloco `if __name__ == "__main__"` para facilitar a execução direta do script.
    - A sequência de etapas descrita acima é automatizada para execução contínua.
 
@@ -74,8 +85,10 @@ Compreende dez anos (01/01/2015 - 01/01/2025) de dados referentes ao preço do c
 A avaliação do modelo aponta os seguintes resultados para as métricas de performance:
 
 1. **MAE (Mean Absolute Error)**:
-O MAE é de R$ 26.91, ou seja, em média, as previsões do modelo estão desviando dos dados reais por R$ 26.91. Esse valor é relativamente pequeno, sugerindo que o modelo está fazendo previsões próximas aos dados reais na maioria das vezes.
+O MAE é de R$ 22.76, ou seja, em média, as previsões do modelo estão desviando dos dados reais por R$ 22.76. Esse valor é relativamente pequeno, sugerindo que o modelo está fazendo previsões próximas aos dados reais na maioria das vezes.
 2. **MAPE (Mean Absolute Percentage Error)**:
-O MAPE é de 2.07% e, portanto, indica um erro de 2.07% em média entre os dados reais e os dados previstos. Da mesma forma, essa métrica sugere que o modelo produz previsões precisas, com erros percentuais pequenos.
+O MAPE é de 1.92% e, portanto, indica um erro de 1.92% em média entre os dados reais e os dados previstos. Da mesma forma, essa métrica sugere que o modelo produz previsões precisas, com erros percentuais pequenos.
 3. **RMSE (Root Mean Squared Error)**:
-O RMSE é de R$ 44.42 e, uma vez que o RMSE é mais sensível a grandes erros do que o MAE, esse resultado mais alto mostra que, embora a média dos erros seja pequena, há algumas previsões em que o modelo erra significativamente, provavelmente em casos isolados ou extremos (outliers).
+O RMSE é de R$ 33.06 e, uma vez que o RMSE é mais sensível a grandes erros do que o MAE, esse resultado mais alto mostra que, embora a média dos erros seja pequena, há algumas previsões em que o modelo erra significativamente, provavelmente em casos isolados ou extremos (outliers).
+
+Podemos concluir que o modelo aprendeu com sucesso as dependências temporais nos dados, alcançando desempenho competitivo, conforme indicado pelos baixos valores das métricas de performance no conjunto de validação.
