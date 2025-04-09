@@ -60,7 +60,7 @@ Compreende dez anos (01/01/2015 - 01/01/2025) de dados referentes ao preço do c
       - Épocas (`epochs=100`): define o número máximo de passagens completas pelos dados de treino (até 100 rodadas).
       - Batch size (`batch_size=32`): número de amostras processadas antes da atualização dos pesos — aqui, 32 exemplos por vez.
       - `validation_split=0.2`: separa 20% dos dados de treino para avaliar o desempenho do modelo a cada época.
-   	- `callbacks=[early_stop]`: interrompe o treinamento automaticamente se a perda de validação não melhorar após 5 épocas, e restaura os melhores pesos obtidos.
+      - `callbacks=[early_stop]`: interrompe o treinamento automaticamente se a perda de validação não melhorar após 5 épocas, e restaura os melhores pesos obtidos.
       - `verbose=1`: exibe o progresso do treinamento em tempo real, mostrando o desempenho em cada época.
 
 8. **Predição e Avaliação do Modelo**:
