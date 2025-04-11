@@ -37,7 +37,7 @@ Compreende dez anos (01/01/2015 - 01/01/2025) de dados referentes ao preço do c
 4. **Preparação dos Dados para o Modelo LSTM**:
    - Normalização dos dados para uma escala 0-1 utilizando o `MinMaxScaler`.
    - Divisão dos dados em conjuntos de treinamento (80%) e teste (20%).
-   - Criação de sequências de dados para treinamento e teste do modelo LSTM com uma janela de tempo fixa (`window_size`) de 60 dias.
+   - Criação de sequências de dados para treinamento e teste do modelo LSTM com uma janela de tempo deslizante (`window_size`) de 60 dias.
 
 5. **Construção do Modelo LSTM**:
    - Definição do modelo LSTM com camadas sequenciais:
@@ -87,7 +87,7 @@ A avaliação do modelo aponta os seguintes resultados para as métricas de perf
 1. **MAE (Mean Absolute Error)**:
 O MAE é de R$ 22.76, ou seja, em média, as previsões do modelo estão desviando dos dados reais por R$ 22.76. Esse valor é relativamente pequeno, sugerindo que o modelo está fazendo previsões próximas aos dados reais na maioria das vezes.
 2. **MAPE (Mean Absolute Percentage Error)**:
-O MAPE é de 1.92% e, portanto, indica um erro de 1.92% em média entre os dados reais e os dados previstos. Da mesma forma, essa métrica sugere que o modelo produz previsões precisas, com erros percentuais pequenos.
+O MAPE é de 1,92% e, portanto, o modelo possui alta acurácia, com erros percentuais médios inferiores a 1,92%.
 3. **RMSE (Root Mean Squared Error)**:
 O RMSE é de R$ 33.06 e, uma vez que o RMSE é mais sensível a grandes erros do que o MAE, esse resultado mais alto mostra que, embora a média dos erros seja pequena, há algumas previsões em que o modelo erra significativamente, provavelmente em casos isolados ou extremos (outliers).
 
